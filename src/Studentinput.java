@@ -26,14 +26,14 @@ public class Studentinput {
         int age;
         while (true) {
             System.out.print("Enter age: ");
-            if (scanner.hasNextInt()) {
+            try {
                 age = scanner.nextInt();
                 scanner.nextLine();
                 if (Validation.isValidAge(age)) {
                     break;
                 }
                 System.out.println("Age must be between 18 and 100!");
-            } else {
+            } catch (java.util.InputMismatchException e) {
                 System.out.println("Age must be a number!");
                 scanner.nextLine();
             }
@@ -41,14 +41,14 @@ public class Studentinput {
         double gpa;
         while (true) {
             System.out.print("Enter GPA: ");
-            if (scanner.hasNextDouble()) {
+            try {
                 gpa = scanner.nextDouble();
                 scanner.nextLine();
                 if (Validation.isValidGpa(gpa)) {
                     break;
                 }
                 System.out.println("GPA must be between 0 and 10!");
-            } else {
+            } catch (java.util.InputMismatchException e) {
                 System.out.println("GPA must be a number!");
                 scanner.nextLine();
             }

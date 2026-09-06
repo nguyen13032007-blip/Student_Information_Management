@@ -1,16 +1,24 @@
+import java.util.Comparator;
 import java.util.ArrayList;
 public class StudentManager {
     private ArrayList<Student> students;
+    private StudentFile studentFile;
 
     // Constructor
     public StudentManager() {
-        students = new ArrayList<>();
+        studentFile = new StudentFile();
+        students = studentFile.loadStudents();
     }
 
     // Add student
     public void addStudent(Student student) {
         students.add(student);
         System.out.println("Student added successfully!");
+    }
+
+    // Save Students
+    public void saveStudents() {
+        studentFile.saveStudents(students);
     }
 
     // Display all students
@@ -35,8 +43,25 @@ public class StudentManager {
         }
         return null;
     }
-        // Update Student
-        public boolean updateStudent(String studentId, String newName, int newAge, double newGpa) {
+
+    // Sort students by ID
+    public void sortById() {students.sort(Comparator.comparing(Student::getStudentId));
+        System.out.println("Students sorted by ID!");
+    }
+
+    // Sort students by name
+    public void sortByName() {
+        students.sort(Comparator.comparing(Student::getStudentName));
+        System.out.println("Students sorted by name!");
+    }
+
+    // Sort students by GPA
+    public void sortByGpa() {
+        students.sort(Comparator.comparingDouble(Student::getGpa));
+        System.out.println("Students sorted by GPA!");
+    }
+    // Update Student
+       public boolean updateStudent(String studentId, String newName, int newAge, double newGpa) {
             Student student = searchStudentById(studentId);
             if (student != null) {
                 student.setStudentName(newName);
