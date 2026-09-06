@@ -1,0 +1,2 @@
+SE001|Nguyen Van A|19|8.5
+SE002|Tran Van B|21|7.8
